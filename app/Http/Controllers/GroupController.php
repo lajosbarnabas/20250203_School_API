@@ -6,6 +6,7 @@ use App\Models\Group;
 use App\Http\Requests\StoreGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Http\Resources\StudentResource;
+use App\Http\Resources\TeacherResource;
 
 class GroupController extends Controller
 {
@@ -67,5 +68,9 @@ class GroupController extends Controller
 
     public function studentsOfGroup(Group $group){
         return response()->json(StudentResource::collection($group->students));
+    }
+
+    public function teachersOfGroup(Group $group){
+        return response()->json(TeacherResource::collection($group->teachers));
     }
 }
