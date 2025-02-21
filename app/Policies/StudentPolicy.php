@@ -8,6 +8,13 @@ use Illuminate\Auth\Access\Response;
 
 class StudentPolicy
 {
+    public function before(User $user){
+        if($user->is_admin){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Determine whether the user can view any models.
      */
@@ -37,6 +44,7 @@ class StudentPolicy
      */
     public function update(User $user, Student $student): bool
     {
+        // return $user->is_admin;
         return false;
     }
 
